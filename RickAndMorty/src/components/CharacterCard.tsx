@@ -10,10 +10,7 @@ export const CharacterCard = ({character}: Props) => {
             <img src={character.image} alt={character.name} className="character-image" />
             <h3 className="character-name">{character.name}</h3>
             <p>
-                <span className={`status-indicator status-${character.status.toLowerCase()}`}>
-                    {character.status}
-                </span>
-                {"-"} {character.species}
+                {character.status} {"-"} {character.species}
             </p>
         </div>
     )

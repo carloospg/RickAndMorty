@@ -3,7 +3,10 @@ $card-bg: white;
 $border-color: #e0e0e0;
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   background-color: $bg-color;
   margin: 0;
   padding: 0;
@@ -38,15 +41,6 @@ body {
     font-size: 20px;
     margin-top: 10px 0px;
     color: #333333;
-
-    .status_indicator {
-      font-weight: bold;
-
-      &.status-alive {color: lightgreen}
-      &.status-dead {color: red}
-      &.status-unknown {color: grey;}
-
-    }
   }
 }
 
@@ -108,8 +102,88 @@ h1 {
     outline: none;
 
     &:focus {
-      border-color: #333333;
       box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .search-button {
+    padding: 12px 24px;
+    background-color: white;
+    color: #333333;
+    border: 1px solid #dddddd;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 5px;
+
+    &:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.search-historial {
+  margin: 20px 0;
+  text-align: center;
+
+  h3 {
+    color: #666;
+    padding: 16px;
+    margin: 0px;
+  }
+
+  .search-historial-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    li {
+      background-color: white;
+      border: 1px solid #dddddd;
+      padding: 5px 15px;
+      border-radius: 15px;
+      cursor: pointer;
+      color: #333333;
+      transition: all 0.2s;
+      font-size: 14px;
+
+      &:hover {
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+.filter-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+
+  .filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #cccccc;
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555555;
+    transition: all 0.2s;
+
+    &:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    &.active {
+      background-color: #333333;
+      color: white;
+      border-color: #333333;
+      font-weight: bold;
     }
   }
 }
