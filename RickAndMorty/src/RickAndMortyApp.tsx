@@ -14,7 +14,9 @@ export const RickAndMortyApp = () => {
     previousTerms,
     handleTermClicked,
     statusFilter,
-    handleFilterChange
+    handleFilterChange,
+    loadMore,
+    hasMore
   } = useCharacters();
 
   return (
@@ -33,9 +35,9 @@ export const RickAndMortyApp = () => {
 
       <FilterButtons currentFilter={statusFilter} onFilterChange={handleFilterChange} />
 
-      {loading && <p className="message">Cargando...</p>}
+      {loading && characters.length === 0 && <p className="message">Cargando...</p>}
       {error && <p className="message">No hay datos</p>}
-      {!loading && !error && <CharacterList characters={characters} />}
+      {!error && ( <CharacterList characters={characters} loadMore={loadMore} hasMore={hasMore} />)}
     </div>
   );
 };
