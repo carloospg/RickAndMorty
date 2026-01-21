@@ -4,6 +4,15 @@ export interface Character {
   status: "Alive" | "Dead" | "unknown";
   species: string;
   image: string;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
 }
 
 export interface ApiResponse {

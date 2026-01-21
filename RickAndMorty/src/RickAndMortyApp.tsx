@@ -4,6 +4,7 @@ import { SearchHistorial } from "./components/SearchHistorial";
 import { CustomHeader } from "./shared/components/CustomHeader";
 import { CharacterList } from "./components/CharacterList";
 import { FilterButtons } from "./shared/components/FilterButtons";
+import { CharacterDetail } from "./components/CharacterDetail";
 
 export const RickAndMortyApp = () => {
   const {
@@ -16,7 +17,9 @@ export const RickAndMortyApp = () => {
     statusFilter,
     handleFilterChange,
     loadMore,
-    hasMore
+    hasMore,
+    selectedCharacter,
+    setSelectedCharacter,
   } = useCharacters();
 
   return (
@@ -26,18 +29,39 @@ export const RickAndMortyApp = () => {
         description="Busca tus personajes favoritos"
       />
 
-      <SearchBar placeholder="Buscar personaje..." onQuery={handleSearch} />
+      {selectedCharacter ? (
+        <CharacterDetail
+          character={selectedCharacter}
+          onBack={() => setSelectedCharacter(null)}
+        />
+      ) : (
+        <>
+          <SearchBar placeholder="Buscar personaje..." onQuery={handleSearch} />
 
-      <SearchHistorial
-        searches={previousTerms}
-        onLabelClicked={handleTermClicked}
-      />
+          <SearchHistorial
+            searches={previousTerms}
+            onLabelClicked={handleTermClicked}
+          />
 
-      <FilterButtons currentFilter={statusFilter} onFilterChange={handleFilterChange} />
+          <FilterButtons
+            currentFilter={statusFilter}
+            onFilterChange={handleFilterChange}
+          />
 
-      {loading && characters.length === 0 && <p className="message">Cargando...</p>}
-      {error && <p className="message">No hay datos</p>}
-      {!error && ( <CharacterList characters={characters} loadMore={loadMore} hasMore={hasMore} />)}
+          {loading && characters.length === 0 && (
+            <p className="message">Cargando...</p>
+          )}
+          {error && <p className="message">No hay datos</p>}
+          {!error && (
+            <CharacterList
+              characters={characters}
+              loadMore={loadMore}
+              hasMore={hasMore}
+              onCharacterClick={setSelectedCharacter}
+            />
+          )}
+        </>
+      )}
     </div>
   );
 };

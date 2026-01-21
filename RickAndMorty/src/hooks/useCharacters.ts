@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { getCharactersAction } from "../actions/get-characters";
 import type { Character } from "../types";
-import { FALSE } from "sass";
 
 export const useCharacters = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -12,6 +11,7 @@ export const useCharacters = () => {
   const [statusFilter, setStatusFilter] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null)
 
   const fetchCharacters = async (currentPage:number, name: string, status: string, isNewSearch: boolean) => {
     try {
@@ -87,6 +87,8 @@ export const useCharacters = () => {
     handleFilterChange,
     statusFilter,
     loadMore,
-    hasMore
+    hasMore,
+    selectedCharacter,
+    setSelectedCharacter
   }
 };
