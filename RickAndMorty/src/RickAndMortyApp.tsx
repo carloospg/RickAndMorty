@@ -25,7 +25,7 @@ export const RickAndMortyApp = () => {
   return (
     <div className="app-container">
       <CustomHeader
-        title="Ricardo y Mortadelo"
+        title="RicK y Morty"
         description="Busca tus personajes favoritos"
       />
 
